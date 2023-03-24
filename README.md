@@ -1,3 +1,4 @@
 # Machine-Learning-for-Drones
 
-This is a description of the project. Include what it will be used for. Basically just copy the project proposal
+A multicopter's flight stability is heavily impacted by the motion and shape of its propellers. Seemingly minor issues with propellers, such as blemishes, cuts, or scratches can have a significant impact on the flight. As such, when working with UAVs such as quadcopters, it is prudent to identify methods of detecting damage before the damage has the chance to propagate and cause larger system-wide failures. Machine learning can be a useful tool for autonomous structural health monitoring for multicopters.
+For this project, I am using yaw-pitch-roll data from flight tests with a Ryze Tello. During these flight tests, damage was simulated. The effect of the simulated damage on the flight stability was captured in the yaw-pitch-roll data. This data will be fed into a neural network that will be capable of classifying the damage state of the drone's flight data. The end goal for this project is to train the neural network to identify when the quadcopter has sustained damage. 
