@@ -1,0 +1,299 @@
+import scipy.io
+import os
+import numpy as np
+
+# Begin loading in datasets 
+
+h_2_1x  = scipy.io.loadmat('Hover_heavy_1.mat')['x'][0]
+h_2_2x  = scipy.io.loadmat('Hover_heavy_2.mat')['x'][0]
+h_2_3x  = scipy.io.loadmat('Hover_heavy_3.mat')['x'][0]
+h_1_1x  = scipy.io.loadmat('Hover_med_1.mat')['x'][0]
+h_1_2x  = scipy.io.loadmat('Hover_med_2.mat')['x'][0]
+h_1_3x  = scipy.io.loadmat('Hover_med_3.mat')['x'][0]
+h_0_1x  = scipy.io.loadmat('Hover_noweight_1.mat')['x'][0]
+h_0_2x  = scipy.io.loadmat('Hover_noweight_2.mat')['x'][0]
+h_0_3x  = scipy.io.loadmat('Hover_noweight_3.mat')['x'][0]
+m_2_1x  = scipy.io.loadmat('slow_heavy_1.mat')['x'][0]
+m_2_2x  = scipy.io.loadmat('slow_heavy_2.mat')['x'][0]
+m_2_3x  = scipy.io.loadmat('slow_heavy_3.mat')['x'][0]
+m_1_1x  = scipy.io.loadmat('slow_med_1.mat')['x'][0]
+m_1_2x  = scipy.io.loadmat('slow_med_2.mat')['x'][0]
+m_1_3x  = scipy.io.loadmat('slow_med_3.mat')['x'][0]
+m_0_1x  = scipy.io.loadmat('slow_noweight_1.mat')['x'][0]
+m_0_2x  = scipy.io.loadmat('slow_noweight_2.mat')['x'][0]
+m_0_3x  = scipy.io.loadmat('slow_noweight_3.mat')['x'][0]
+
+h_2_1y  = scipy.io.loadmat('Hover_heavy_1.mat')['y'][0]
+h_2_2y  = scipy.io.loadmat('Hover_heavy_2.mat')['y'][0]
+h_2_3y  = scipy.io.loadmat('Hover_heavy_3.mat')['y'][0]
+h_1_1y  = scipy.io.loadmat('Hover_med_1.mat')['y'][0]
+h_1_2y  = scipy.io.loadmat('Hover_med_2.mat')['y'][0]
+h_1_3y  = scipy.io.loadmat('Hover_med_3.mat')['y'][0]
+h_0_1y  = scipy.io.loadmat('Hover_noweight_1.mat')['y'][0]
+h_0_2y  = scipy.io.loadmat('Hover_noweight_2.mat')['y'][0]
+h_0_3y  = scipy.io.loadmat('Hover_noweight_3.mat')['y'][0]
+m_2_1y  = scipy.io.loadmat('slow_heavy_1.mat')['y'][0]
+m_2_2y  = scipy.io.loadmat('slow_heavy_2.mat')['y'][0]
+m_2_3y  = scipy.io.loadmat('slow_heavy_3.mat')['y'][0]
+m_1_1y  = scipy.io.loadmat('slow_med_1.mat')['y'][0]
+m_1_2y  = scipy.io.loadmat('slow_med_2.mat')['y'][0]
+m_1_3y  = scipy.io.loadmat('slow_med_3.mat')['y'][0]
+m_0_1y  = scipy.io.loadmat('slow_noweight_1.mat')['y'][0]
+m_0_2y  = scipy.io.loadmat('slow_noweight_2.mat')['y'][0]
+m_0_3y  = scipy.io.loadmat('slow_noweight_3.mat')['y'][0]
+
+h_2_1z  = scipy.io.loadmat('Hover_heavy_1.mat')['z'][0]
+h_2_2z  = scipy.io.loadmat('Hover_heavy_2.mat')['z'][0]
+h_2_3z  = scipy.io.loadmat('Hover_heavy_3.mat')['z'][0]
+h_1_1z  = scipy.io.loadmat('Hover_med_1.mat')['z'][0]
+h_1_2z  = scipy.io.loadmat('Hover_med_2.mat')['z'][0]
+h_1_3z  = scipy.io.loadmat('Hover_med_3.mat')['z'][0]
+h_0_1z  = scipy.io.loadmat('Hover_noweight_1.mat')['z'][0]
+h_0_2z  = scipy.io.loadmat('Hover_noweight_2.mat')['z'][0]
+h_0_3z  = scipy.io.loadmat('Hover_noweight_3.mat')['z'][0]
+m_2_1z  = scipy.io.loadmat('slow_heavy_1.mat')['z'][0]
+m_2_2z  = scipy.io.loadmat('slow_heavy_2.mat')['z'][0]
+m_2_3z  = scipy.io.loadmat('slow_heavy_3.mat')['z'][0]
+m_1_1z  = scipy.io.loadmat('slow_med_1.mat')['z'][0]
+m_1_2z  = scipy.io.loadmat('slow_med_2.mat')['z'][0]
+m_1_3z  = scipy.io.loadmat('slow_med_3.mat')['z'][0]
+m_0_1z  = scipy.io.loadmat('slow_noweight_1.mat')['z'][0]
+m_0_2z  = scipy.io.loadmat('slow_noweight_2.mat')['z'][0]
+m_0_3z  = scipy.io.loadmat('slow_noweight_3.mat')['z'][0]
+
+# Trim the datasets
+
+h_2_1x = h_2_1x[0:100*(len(h_2_1x)//100)]
+h_2_2x = h_2_2x[0:100*(len(h_2_2x)//100)]
+h_2_3x = h_2_3x[0:100*(len(h_2_3x)//100)]
+h_1_1x = h_1_1x[0:100*(len(h_1_1x)//100)]
+h_1_2x = h_1_2x[0:100*(len(h_1_2x)//100)]
+h_1_3x = h_1_3x[0:100*(len(h_1_3x)//100)]
+h_0_1x = h_0_1x[0:100*(len(h_0_1x)//100)]
+h_0_2x = h_0_2x[0:100*(len(h_0_2x)//100)]
+h_0_3x = h_0_3x[0:100*(len(h_0_3x)//100)]
+m_2_1x = m_2_1x[0:100*(len(m_2_1x)//100)]
+m_2_2x = m_2_2x[0:100*(len(m_2_2x)//100)]
+m_2_3x = m_2_3x[0:100*(len(m_2_3x)//100)]
+m_1_1x = m_1_1x[0:100*(len(m_1_1x)//100)]
+m_1_2x = m_1_2x[0:100*(len(m_1_2x)//100)]
+m_1_3x = m_1_3x[0:100*(len(m_1_3x)//100)]
+m_0_1x = m_0_1x[0:100*(len(m_0_1x)//100)]
+m_0_2x = m_0_2x[0:100*(len(m_0_2x)//100)]
+m_0_3x = m_0_3x[0:100*(len(m_0_3x)//100)]
+
+h_2_1y = h_2_1y[0:100*(len(h_2_1y)//100)]
+h_2_2y = h_2_2y[0:100*(len(h_2_2y)//100)]
+h_2_3y = h_2_3y[0:100*(len(h_2_3y)//100)]
+h_1_1y = h_1_1y[0:100*(len(h_1_1y)//100)]
+h_1_2y = h_1_2y[0:100*(len(h_1_2y)//100)]
+h_1_3y = h_1_3y[0:100*(len(h_1_3y)//100)]
+h_0_1y = h_0_1y[0:100*(len(h_0_1y)//100)]
+h_0_2y = h_0_2y[0:100*(len(h_0_2y)//100)]
+h_0_3y = h_0_3y[0:100*(len(h_0_3y)//100)]
+m_2_1y = m_2_1y[0:100*(len(m_2_1y)//100)]
+m_2_2y = m_2_2y[0:100*(len(m_2_2y)//100)]
+m_2_3y = m_2_3y[0:100*(len(m_2_3y)//100)]
+m_1_1y = m_1_1y[0:100*(len(m_1_1y)//100)]
+m_1_2y = m_1_2y[0:100*(len(m_1_2y)//100)]
+m_1_3y = m_1_3y[0:100*(len(m_1_3y)//100)]
+m_0_1y = m_0_1y[0:100*(len(m_0_1y)//100)]
+m_0_2y = m_0_2y[0:100*(len(m_0_2y)//100)]
+m_0_3y = m_0_3y[0:100*(len(m_0_3y)//100)]
+
+h_2_1z = h_2_1z[0:100*(len(h_2_1z)//100)]
+h_2_2z = h_2_2z[0:100*(len(h_2_2z)//100)]
+h_2_3z = h_2_3z[0:100*(len(h_2_3z)//100)]
+h_1_1z = h_1_1z[0:100*(len(h_1_1z)//100)]
+h_1_2z = h_1_2z[0:100*(len(h_1_2z)//100)]
+h_1_3z = h_1_3z[0:100*(len(h_1_3z)//100)]
+h_0_1z = h_0_1z[0:100*(len(h_0_1z)//100)]
+h_0_2z = h_0_2z[0:100*(len(h_0_2z)//100)]
+h_0_3z = h_0_3z[0:100*(len(h_0_3z)//100)]
+m_2_1z = m_2_1z[0:100*(len(m_2_1z)//100)]
+m_2_2z = m_2_2z[0:100*(len(m_2_2z)//100)]
+m_2_3z = m_2_3z[0:100*(len(m_2_3z)//100)]
+m_1_1z = m_1_1z[0:100*(len(m_1_1z)//100)]
+m_1_2z = m_1_2z[0:100*(len(m_1_2z)//100)]
+m_1_3z = m_1_3z[0:100*(len(m_1_3z)//100)]
+m_0_1z = m_0_1z[0:100*(len(m_0_1z)//100)]
+m_0_2z = m_0_2z[0:100*(len(m_0_2z)//100)]
+m_0_3z = m_0_3z[0:100*(len(m_0_3z)//100)]
+
+# Reshape trimmed datasets
+
+h0x = np.concatenate((h_0_1x,h_0_2x,h_0_3x))
+h0y = np.concatenate((h_0_1y,h_0_2y,h_0_3y))
+h0z = np.concatenate((h_0_1z,h_0_2z,h_0_3z))
+h0 = np.array([h0x,h0y,h0z])
+h0 = np.reshape(h0,(2300,3,10))
+
+m0x = np.concatenate((m_0_1x,m_0_2x,m_0_3x))
+m0y = np.concatenate((m_0_1y,m_0_2y,m_0_3y))
+m0z = np.concatenate((m_0_1z,m_0_2z,m_0_3z))
+m0 = np.array([m0x,m0y,m0z])
+
+h1x = np.concatenate((h_1_1x,h_1_2x,h_1_3x))
+h1y = np.concatenate((h_1_1y,h_1_2y,h_1_3y))
+h1z = np.concatenate((h_1_1z,h_1_2z,h_1_3z))
+h1 = np.array([h1x,h1y,h1z])
+h1 = np.reshape(h1,(4110,3,10))
+
+m1x = np.concatenate((m_1_1x,m_1_2x,m_1_3x))
+m1y = np.concatenate((m_1_1y,m_1_2y,m_1_3y))
+m1z = np.concatenate((m_1_1z,m_1_2z,m_1_3z))
+m1 = np.array([m1x,m1y,m1z])
+
+h2x = np.concatenate((h_2_1x,h_2_2x,h_2_3x))
+h2y = np.concatenate((h_2_1y,h_2_2y,h_2_3y))
+h2z = np.concatenate((h_2_1z,h_2_2z,h_2_3z))
+h2 = np.array([h2x,h2y,h2z])
+h2 = np.reshape(h2,(3640,3,10))
+
+m2x = np.concatenate((m_2_1x,m_2_2x,m_2_3x))
+m2y = np.concatenate((m_2_1y,m_2_2y,m_2_3y))
+m2z = np.concatenate((m_2_1z,m_2_2z,m_2_3z))
+m2 = np.array([m2x,m2y,m2z])
+
+h0 = np.reshape(h0, (3,10,-1))
+h0 = np.transpose(h0,axes = [1,0,2])
+m0 = np.reshape(m0, (3,10,-1))
+m0 = np.transpose(m0,axes = [1,0,2])
+h1 = np.reshape(h1, (3,10,-1))
+h1 = np.transpose(h1,axes = [1,0,2])
+m1 = np.reshape(m1, (3,10,-1))
+m1 = np.transpose(m1,axes = [1,0,2])
+h2 = np.reshape(h2, (3,10,-1))
+h2 = np.transpose(h2,axes = [1,0,2])
+m2 = np.reshape(m2, (3,10,-1))
+m2 = np.transpose(m2,axes = [1,0,2])
+
+# Finalize training shape
+
+h_snapshots = np.concatenate((h0,h1,h2),axis=2)
+h_snapshots = np.swapaxes(h_snapshots,0,2)
+m_snapshots = np.concatenate((m0,m1,m2),axis=2)
+m_snapshots = np.swapaxes(m_snapshots,0,2)
+
+# Targets
+
+htarget = np.zeros([2300+4110+3640,1])
+htarget[0:2299] = 0
+htarget[2300:2300+4109] = 1
+htarget[2300+4110:2300+4110+3640] = 2
+mtarget = np.zeros([270+90+270,1])
+mtarget[0:269] = 0
+mtarget[270:270+89] = 1
+mtarget[270+90:270+90+269] = 2
+
+# MOVING FORWARD TO MAKING THE MODEL
+
+import tensorflow as tf
+from tensorflow import keras
+import time
+from tensorflow.keras.utils import to_categorical
+from tensorflow.keras.metrics import Accuracy
+from tensorflow.keras.optimizers import Adam
+from tensorflow.keras.losses import SparseCategoricalCrossentropy
+from sklearn.model_selection import train_test_split
+from keras.models import Sequential
+from sklearn.metrics import confusion_matrix
+from keras.layers import Dense
+import matplotlib.image as mpimg
+import seaborn as sns
+import matplotlib as mpl
+import matplotlib.pyplot as plt
+from sklearn.metrics import classification_report
+from sklearn.metrics import accuracy_score, precision_score,r2_score
+
+# Test/trainsplit
+
+(hX_train,hX_test,hy_train,hy_test) = train_test_split(h_snapshots,htarget,random_state=123,shuffle=True, train_size=0.4)
+(mX_train,mX_test,my_train,my_test) = train_test_split(m_snapshots,mtarget,random_state=123,shuffle=True, train_size=0.4)
+
+hxtrain = hX_train.reshape(-1,30)/8
+hxtest = hX_test.reshape(-1,30)/8
+hytrain = to_categorical(hy_train,3)
+hytest = to_categorical(hy_test,3)
+mxtrain = mX_train.reshape(-1,30)/8
+mxtest = mX_test.reshape(-1,30)/8
+mytrain = to_categorical(my_train,3)
+mytest = to_categorical(my_test,3)
+
+# Build the model for hovering flight
+
+hmodel = keras.Sequential([keras.layers.Dense(3, activation='softmax')])
+hmodel.compile(optimizer='adam', loss='categorical_crossentropy',metrics = ['accuracy'])
+hhistory = hmodel.fit(hxtrain, hytrain, epochs=10,batch_size = 16,validation_split = 0.4)
+
+t = time.time()
+hpreds = hmodel.predict(hxtest)
+t = (time.time()-t)/len(hpreds)
+hpred = np.argmax(hpreds)
+hpredslabels = np.zeros([hpreds.shape[0],1])
+for i in range(len(hpredslabels)):
+  hpredslabels[i] = np.argmax(hpreds[i])
+labels = ['No Damage','Mild Damage','Severe Damage']
+
+acc_h = accuracy_score(hpredslabels,hy_test)
+
+cm = confusion_matrix(hy_test, hpredslabels)
+ax = sns.heatmap(cm,linewidths=1, annot=True, fmt = 'd', cmap='viridis', cbar=True);
+ax.set_xticklabels(labels);
+ax.set_yticklabels(labels);
+plt.xlabel('Predicted Item');
+plt.ylabel('Actual Item');
+plt.xticks(rotation=45);
+plt.yticks(rotation=45);
+plt.title('Hover Classification results', fontsize='medium', fontweight='bold');
+print(classification_report(hy_test, hpredslabels))
+
+plt.plot(hhistory.history['loss'])
+plt.plot(hhistory.history['val_loss'])
+plt.title("Hovering Loss")
+plt.legend(['Training','Validation'])
+
+plt.plot(hhistory.history['accuracy'])
+plt.plot(hhistory.history['val_accuracy'])
+plt.title('Hovering Accuracy')
+plt.legend(['Training','Validation'])
+
+# Build the model for slow forward flight
+
+mmodel = keras.Sequential([keras.layers.Dense(3, activation='softmax')])
+mmodel.compile(optimizer='adam', loss='categorical_crossentropy',metrics = ['accuracy'])
+mhistory = mmodel.fit(mxtrain, mytrain, epochs=200,batch_size = 16,validation_split = 0.4)
+
+t = time.time()
+mpreds = mmodel.predict(mxtest)
+t = (time.time()-t)/len(mpreds)
+mpred = np.argmax(mpreds)
+mpredslabels = np.zeros([mpreds.shape[0],1])
+for i in range(len(mpredslabels)):
+  mpredslabels[i] = np.argmax(mpreds[i])
+
+acc_m = accuracy_score(mpredslabels,my_test)
+
+cm = confusion_matrix(my_test, mpredslabels)
+ax = sns.heatmap(cm,linewidths=1, annot=True, fmt = 'd', cmap='viridis', cbar=True);
+ax.set_xticklabels(labels);
+ax.set_yticklabels(labels);
+plt.xlabel('Predicted Damage State');
+plt.ylabel('Actual Damage State');
+plt.xticks(rotation=45);
+plt.yticks(rotation=45);
+plt.title('Moving Classification results', fontsize='medium', fontweight='bold');
+print(classification_report(my_test, mpredslabels))
+
+plt.plot(mhistory.history['loss'])
+plt.plot(mhistory.history['val_loss'])
+plt.title("Moving Loss")
+plt.legend(['Training','Validation'])
+
+plt.plot(mhistory.history['accuracy'])
+plt.plot(mhistory.history['val_accuracy'])
+plt.title('Moving Accuracy')
+plt.legend(['Training','Validation'])
+
+
+
